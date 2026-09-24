@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>世界の絶景フォトギャラリー</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+         max-width: 640px; margin: 0 auto; padding: 0 16px 60px; line-height: 1.8; color: #1c1c1e; background: #fff; }
+  h1 { font-size: 1.5em; margin-top: 1em; }
+  p.lead { color: #3c3c43; }
+  figure { margin: 28px 0; }
+  figure img, .bg-photo { width: 100%; height: 220px; object-fit: cover; border-radius: 10px;
+    display: block; background-color: #e5e5ea; background-size: cover; background-position: center; }
+  figcaption { font-size: 0.9em; color: #6e6e73; margin-top: 8px; }
+  .overlay-wrap { position: relative; }
+  .overlay-wrap .tap-overlay { position: absolute; inset: 0; }
+  .protect-wrap { position: relative; }
+  .protect-wrap .protect-badge {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(0,0,0,0.35); color: #fff; font-size: 0.85em; border-radius: 10px;
+  }
+  footer { margin-top: 40px; font-size: 0.8em; color: #8e8e93; border-top: 1px solid #e5e5ea; padding-top: 16px; }
+  footer a { color: #007aff; }
+</style>
+</head>
+<body>
+
+<h1>世界の絶景フォトギャラリー</h1>
+<p class="lead">
+このページはImageBrowserの動作確認・App Store掲載スクリーンショット撮影用に
+用意したサンプルページです。画像は<a href="https://picsum.photos/">Lorem Picsum</a>の
+自由に利用できる写真を使用しています。ページ内では、通常のWeb保存を妨げる
+一般的な実装パターン(右クリック/長押し保存の抑制、背景画像埋め込み、
+遅延読み込み、保護用オーバーレイなど)をあえて再現しています。
+</p>
+
+<figure>
+  <img src="https://picsum.photos/seed/mountain-lake/800/600" alt="山と湖">
+  <figcaption>1. 通常の&lt;img&gt;タグで表示された写真</figcaption>
+</figure>
+
+<figure>
+  <img src="https://picsum.photos/seed/desert-dune/800/600" alt="砂漠の砂丘">
+  <figcaption>2. 通常の&lt;img&gt;タグで表示された写真</figcaption>
+</figure>
+
+<figure>
+  <img src="https://picsum.photos/seed/northern-lights/800/600" alt="オーロラ">
+  <figcaption>3. 通常の&lt;img&gt;タグで表示された写真</figcaption>
+</figure>
+
+<figure>
+  <img src="https://picsum.photos/seed/coral-reef/800/600" alt="サンゴ礁">
+  <figcaption>4. 通常の&lt;img&gt;タグで表示された写真</figcaption>
+</figure>
+
+<figure>
+  <img class="lazy" data-src="https://picsum.photos/seed/rice-terrace/800/600"
+       src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBTAA7" alt="棚田">
+  <figcaption>5. 遅延読み込み(data-src属性、スクロールで読み込まれる)</figcaption>
+</figure>
+
+<figure>
+  <img class="lazy" data-src="https://picsum.photos/seed/canyon-view/800/600"
+       src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBTAA7" alt="渓谷">
+  <figcaption>6. 遅延読み込み(data-src属性、スクロールで読み込まれる)</figcaption>
+</figure>
+
+<figure>
+  <div class="bg-photo" style="background-image:url('https://picsum.photos/seed/waterfall-forest/800/600')" role="img" aria-label="滝と森"></div>
+  <figcaption>7. CSS背景画像(background-image)として埋め込まれた写真</figcaption>
+</figure>
+
+<figure>
+  <div class="bg-photo" style="background-image:url('https://picsum.photos/seed/starry-sky/800/600')" role="img" aria-label="星空"></div>
+  <figcaption>8. CSS背景画像(background-image)として埋め込まれた写真</figcaption>
+</figure>
+
+<figure class="overlay-wrap">
+  <img src="https://picsum.photos/seed/island-beach/800/600" alt="島の浜辺">
+  <a class="tap-overlay" href="https://picsum.photos/seed/island-beach/800/600" aria-label="記事へ"></a>
+  <figcaption>9. 透明なリンク要素が上に重なったカード型レイアウト(ニュースサイトによくある構成)</figcaption>
+</figure>
+
+<figure class="protect-wrap">
+  <img src="https://picsum.photos/seed/mount-fuji/800/600" alt="富士山">
+  <div class="protect-badge">保護用オーバーレイ(サンプル)</div>
+  <figcaption>10. 保護用オーバーレイ画像が上に重なったパターン</figcaption>
+</figure>
+
+<footer>
+  このページはImageBrowserアプリの機能検証・審査提出用スクリーンショット
+  撮影のために作成したサンプルです。実在のニュースサイト等を模したものでは
+  ありません。
+</footer>
+
+<script>
+(function () {
+  // Common real-world "block saving" behaviors this app is built to see
+  // through -- reproduced here on purpose so the bypass is demonstrable
+  // without relying on any real third-party site.
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+  document.querySelectorAll('img').forEach(function (img) {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  });
+
+  // Minimal lazy-load: swap data-src in once the image scrolls near view.
+  var lazyImages = document.querySelectorAll('img.lazy');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          observer.unobserve(img);
+        }
+      });
+    }, { rootMargin: '200px' });
+    lazyImages.forEach(function (img) { observer.observe(img); });
+  } else {
+    lazyImages.forEach(function (img) { img.src = img.dataset.src; });
+  }
+})();
+</script>
+
+</body>
+</html>
