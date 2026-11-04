@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>週末の風景ムービー</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+         max-width: 640px; margin: 0 auto; padding: 0 16px 60px; line-height: 1.8; color: #1c1c1e; background: #fff; }
+  h1 { font-size: 1.5em; margin-top: 1em; margin-bottom: 0.4em; }
+  p.lead { color: #3c3c43; margin-top: 0; }
+  figure { margin: 24px 0; }
+  video { width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; display: block; background: #000; }
+  audio { width: 100%; display: block; }
+  figcaption { font-size: 0.9em; color: #6e6e73; margin-top: 6px; }
+  footer { margin-top: 40px; font-size: 0.8em; color: #8e8e93; border-top: 1px solid #e5e5ea; padding-top: 16px; }
+</style>
+</head>
+<body>
+
+<h1>週末の風景ムービー</h1>
+<p class="lead">夕焼けの海、満天の星、春の桜。週末に撮りためた風景をショートムービーにまとめました。</p>
+
+<figure>
+  <video src="sunset.mp4" poster="sunset.jpg" controls playsinline preload="metadata" title="夕焼けの海"></video>
+  <figcaption>夕焼けの海</figcaption>
+</figure>
+
+<figure>
+  <video src="night.mp4" poster="night.jpg" controls playsinline preload="metadata" title="満天の星と流れ星"></video>
+  <figcaption>満天の星と流れ星</figcaption>
+</figure>
+
+<figure>
+  <video src="sakura.mp4" poster="sakura.jpg" controls playsinline preload="metadata" title="丘の上の桜"></video>
+  <figcaption>丘の上の桜</figcaption>
+</figure>
+
+<figure>
+  <audio src="voice.m4a" controls preload="metadata" title="おやすみBGM"></audio>
+  <figcaption>おやすみBGM</figcaption>
+</figure>
+
+<footer>
+このページは VideoBrowser の動作確認・App Store 掲載スクリーンショット撮影用のサンプルページです。
+動画・音声はすべてこのページのために作成したものです。
+</footer>
+
+</body>
+</html>
